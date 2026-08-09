@@ -1,0 +1,96 @@
+{
+  "theme": "dark",
+  "archetype": "Swiss & High-Contrast (Arcade Minimalist Variant)",
+  "typography": {
+    "headings": {
+      "font": "Outfit, sans-serif",
+      "style": "tracking-tight, font-bold or font-light for contrast"
+    },
+    "body": {
+      "font": "DM Sans, sans-serif",
+      "style": "leading-relaxed, tracking-wide"
+    },
+    "mono": {
+      "font": "JetBrains Mono, monospace",
+      "style": "for scores, ranks, and technical data"
+    }
+  },
+  "colors": {
+    "background": "#050505",
+    "surface": "#121212",
+    "surface_hover": "#1A1A1A",
+    "border": "#27272A",
+    "text_primary": "#FAFAFA",
+    "text_secondary": "#A1A1AA",
+    "accent_primary": "#06B6D4",
+    "accent_secondary": "#EAB308",
+    "danger": "#EF4444"
+  },
+  "visual_enhancers": {
+    "surfaces": "Use Grid Borders (The 'Technical' Look). Container border-collapse style with subtle borders on right and bottom of grid items. For the games container, use solid backgrounds with 1px border and sharp or max 8px border-radius.",
+    "textures": "Subtle noise overlay (opacity 0.03) over the background to kill digital flatness.",
+    "hover_states": "Slight lift (-translate-y-1), border color changes to accent, subtle glow using drop-shadow."
+  },
+  "components": {
+    "game_card": {
+      "layout": "Bento Grid approach. aspect-square or tall rectangles.",
+      "style": "Solid dark surface, 1px border border-zinc-800, hover:border-cyan-500 hover:shadow-[0_0_15px_rgba(6,182,212,0.3)].",
+      "content": "Minimal icon/graphic (Phosphor Icons), game title in Outfit (text-2xl font-bold), simple 'Joacă acum' (Play now) button."
+    },
+    "leaderboard": {
+      "layout": "Compact ranked list. Top 3 treated differently (perhaps slightly larger fonts or subtle accent text color).",
+      "style": "Rows with border-b border-zinc-800. Monospace font for scores.",
+      "interactions": "Tabs for Daily / All-time. Highlight the current user's submitted score row."
+    },
+    "buttons": {
+      "style": "Sharp or slightly rounded (rounded-md), high contrast. Primary: bg-cyan-500 text-black hover:bg-cyan-400. Secondary: bg-transparent border border-zinc-700 text-white hover:border-zinc-500."
+    }
+  },
+  "grids_and_layouts": {
+    "home": "grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6 md:p-12. Generous padding to let elements breathe.",
+    "game_view": "Two-column layout on large screens. Left/Main: Game canvas/area. Right: Local/Global Leaderboard for that game."
+  },
+  "motion": {
+    "transitions": "transition-transform duration-200 ease-out, transition-colors duration-200 ease-out",
+    "entrance": "Staggered fade-up for game cards and leaderboard rows."
+  },
+  "accessibility": {
+    "contrast": "Ensure APCA guidelines. Text over interactive elements must be strictly high contrast.",
+    "focus": "focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050505]"
+  },
+  "media": {
+    "icons": "@phosphor-icons/react (Duotone or Regular for modern minimal look). Use for game categories, UI elements.",
+    "image_urls": {
+      "hero_background": {
+        "url": "https://images.unsplash.com/photo-1557411732-1797a9171fcf?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwxfHxnZW9tZXRyaWMlMjBwYXR0ZXJuJTIwZGFyayUyMG1pbmltYWx8ZW58MHx8fHwxNzg2Mjk4Njk1fDA&ixlib=rb-4.1.0&q=85",
+        "category": "background",
+        "description": "Abstract geometric network lines, use with low opacity (e.g. 10-15%) or mix-blend-screen as a subtle hero backdrop."
+      }
+    }
+  },
+  "instructions_to_main_agent": [
+    "Install @phosphor-icons/react for icons.",
+    "Language MUST be Romanian: 'Acasă', 'Clasament', 'Joacă', 'Scor', 'Nume', 'Jocuri'.",
+    "Do not implement authentication. Use a simple text input for 'Poreclă' (Nickname) before or after a game to submit score.",
+    "Implement games using standard React state or canvas, keeping them completely playable inside the browser.",
+    "Leaderboard should be mocked if backend is not available, but UI should support fetching top 10 scores.",
+    "Never use 'transition: all', target specific properties like 'transform', 'opacity', 'colors'.",
+    "Add 'data-testid' to all interactive elements for testing."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur) only for floating elements like sticky navs or modals.",
+    "You MUST NOT apply universal transition. Eg: transition: all.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; }.",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations.",
+    "NEVER use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Use sonner for toasts notifications.",
+    "Prioritize using pre-existing components from src/components/ui when applicable."
+  ],
+  "GENERAL_UI_UX_DESIGN_GUIDELINES": "Keep the interface highly functional. Do not place elements without intention. Emphasize negative space. Provide immediate visual feedback for all interactions. Avoid pure transparent backgrounds on overlays."
+}
