@@ -81,7 +81,14 @@ export default function TicTacToe({ accent, onGameOver }) {
     }
 
     setLocked(true);
-    const { move } = minimax(b.slice(), true);
+    const empties = b.map((v, idx) => (v ? null : idx)).filter((v) => v !== null);
+    // Beatable AI: plays optimally ~70% of the time, otherwise a random move.
+    let move;
+    if (Math.random() < 0.7) {
+      move = minimax(b.slice(), true).move;
+    } else {
+      move = empties[Math.floor(Math.random() * empties.length)];
+    }
     setTimeout(() => {
       const nb = b.slice();
       if (move != null) nb[move] = "O";
